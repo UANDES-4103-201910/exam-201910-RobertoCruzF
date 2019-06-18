@@ -9,7 +9,70 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<nav class="navbar navbar-default" style="background-color: #067900;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color: #fff;">Z-Mobile</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-home"></span>
+            Handsets
+            <% end %>
+          <li>
+            <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-home"></span>
+            Shopping cart
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-home"></span>
+            Subscriptions
+            <% end %>
+          </li>
+
+
+          </li>
+        </ul>
+
+
+
+
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span>
+            Log Out
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if !user_signed_in? %>
+        <li>
+          <%= link_to new_user_session_path do%>
+            <span class="glyphicon glyphicon-log-in"></span>
+            Sign In
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-user"></span>
+            Sign Up
+            <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<%= yield %>
+</body>
+
 </html>
